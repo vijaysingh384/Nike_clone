@@ -1,6 +1,6 @@
 function Hero() {
   return (
-    <div className="relative w-full">
+    <div className="w-full ">
       <img
         src="https://images-static.nykaa.com/uploads/92f35786-54ca-4154-b8e5-b75612668c18.webp?"
         alt=""

@@ -18,7 +18,7 @@ function OfferBar() {
 
   
   return (
-    <div className="overflow-hidden bg-gray-100 py-2 mt-18 ">
+    <div className=" bg-gray-100 ">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${index * 100}%)` }}

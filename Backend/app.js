@@ -10,7 +10,10 @@ const expressSession = require('express-session');
 const flash = require('connect-flash');
 
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+}));
 
 require('dotenv').config();
 

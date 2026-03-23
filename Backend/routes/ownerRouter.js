@@ -19,7 +19,8 @@ if(process.env.NODE_ENV==="development"){
 });
 }
 router.get('/admin' , function(req, res){
-    res.render('createproducts');
+    let success = req.flash("success");
+    res.json("admin api working" , {success});
 });
 
 

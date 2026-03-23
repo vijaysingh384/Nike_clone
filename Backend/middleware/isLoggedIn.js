@@ -4,7 +4,7 @@
  module.exports = async function (req , res , next){
     if(!req.cookies.token){
         req.flash('error' , "you need to login firrst");
-        return res.redirct("/");
+        return res.redirct("/home");
     }
     try{
         let decoded = jwt.verify(req.cookies.token , process.env.JWT_KEY);
@@ -15,6 +15,6 @@
 
     } catch (error) {
         req.flash('error', "something went wrong");
-        res.redirect("/");
+        res.redirect("/home");
     }
  };

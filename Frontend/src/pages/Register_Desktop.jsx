@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import OfferBar from "../components/OfferBar";
-import Footer from "../components/Footer";
-import PhoneModal from "../components/PhoneModal";
+import Navbar from "../components/Layout/Navbar";
+import OfferBar from "../components/Layout/OfferBar";
+import Footer from "../components/Layout/Footer";
+import PhoneModal from "../components/UI/PhoneModal";
 
 function Register_Desktop() {
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ function Register_Desktop() {
   return (
     <>
       <Navbar />
-      <OfferBar />
+    
 
       <div>
         <ul className="flex gap-4 justify-center mt-10 text-lg mb-10 ">

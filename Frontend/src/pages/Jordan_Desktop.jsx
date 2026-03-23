@@ -1,23 +1,35 @@
-import Navbar from "../components/Navbar";
-import OfferBar from "../components/OfferBar";
-import Footer from "../components/Footer";
-
+import Navbar from "../components/Layout/Navbar";
+import OfferBar from "../components/Layout/OfferBar";
+import Footer from "../components/Layout/Footer";
+import Product_section from "../components/UI/Product_section";
+const bestSellers = [
+  { id: 1, name: "Air Jordan 1 Mid", category: "Shoes", price: "₹11,495", image: "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-554724-136_1.jpg?tr=cm-pad_resize,w-500,h-500" },
+  { id: 2, name: "Nike Dunk Low Retro SE", category: "Men's Shoes", price: "₹10,795", image: "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/f/ff7c9fbNike-DZ5485-003_1.jpg?tr=cm-pad_resize,w-500,h-500" },
+  { id: 3, name: "Nike Air Max Excee", category: "Men's Shoes", price: "₹8,695", image: "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-IB7109-004_1.jpg?tr=cm-pad_resize,w-500,h-500" },
+  { id: 4, name: "Nike Air Force 1 '07" , category: "Men's Shoes", price: "₹9,295", image: "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-IB7110-002_1.jpg?tr=cm-pad_resize,w-500,h-500" },
+  { id: 5, name: "Nike Air Force 1 '07" , category: "Men's Shoes", price: "₹9,295", image: "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/0/30a2302Nike-HV0823-108_1.jpg?tr=cm-pad_resize,w-500,h-500" }
+];
 function Jordan_Desktop() {
+      const handleCardClick = (product) => {
+    console.log("Clicked:", product);
+    // navigate(`/product/${product.id}`) — with React Router
+  };
     return(
         <>
-        <Navbar />
-      <OfferBar />
+        <Navbar fixed = {true} />
+   
       <div className="">
-        <div className="mt-10 px-10 text-2xl font-semibold ">
-          <h1>Jordan</h1>
-        </div>
-        <div className="flex-1 text-center ">
-          <ul className="flex gap-4 justify-center  text-lg  mb-5 ">
-            <li>Shoes</li>
-            <li>Clothing</li>
-            <li>Accessories</li>
-            <li>Shop All</li>
+         <div className="flex items-center px-10 py-4">
+          <h1 className="text-2xl font-semibold w-32">Jordan</h1>
+
+          <ul className="flex-1 flex gap-6 justify-center text-lg">
+            <li className="cursor-pointer hover:underline">Shoes</li>
+            <li className="cursor-pointer hover:underline">Clothing</li>
+            <li className="cursor-pointer hover:underline">Accessories</li>
+            <li className="cursor-pointer hover:underline">Shop All</li>
           </ul>
+
+          <div className="w-32" />
         </div>
         <div>
           <img
@@ -47,6 +59,12 @@ function Jordan_Desktop() {
           <div className="col-span-2 row-span-5 col-start-3"><img src="https://images-static.nykaa.com/uploads/d1351a8e-80d1-44f4-af44-32bf5777afd5.png?tr=cm-pad_resize,w-750" alt="" /></div>
           <div className="col-span-2 row-span-5 col-start-5"><img src="https://images-static.nykaa.com/uploads/c3c93953-e770-473d-9a91-24b341267c82.png?tr=cm-pad_resize,w-750" alt="" /></div>
         </div>
+         <Product_section
+              label="Featured"
+                title="Best Sellers"
+                products={bestSellers}
+                onCardClick={handleCardClick}
+              />
        
       </div>
       <Footer />

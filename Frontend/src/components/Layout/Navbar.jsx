@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import OfferBar from "./OfferBar";
 function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
 
@@ -191,17 +192,19 @@ function Navbar() {
   return (
     <>
     <div className="flex w-full top-0 bg-zinc-100 ">
-        <Link to="/Register_Desktop">Register |</Link>
+        <Link to="/Register_Desktop">Register </Link>
 
-        <Link to="/login"> Login</Link>
+        <Link onClick={() => setOpen(true)}> Login</Link>
     </div>
-      <nav className="bg-white items-center justify-between py-4 flex px-10 shadow-md fixed top-0  left-0 right-0 z-80 mt-5">
+      <nav className="bg-white items-center justify-between py-4 flex px-10 shadow-md sticky top-0   left-0 right-0 z-80">
         <div>
+          <Link to="/Home">
           <img 
             className="h-6 w-auto"
             src="https://imgs.search.brave.com/Wg8fpF11Si1JDzBhYeqashrwF51ti2DJkc_y0B5VXlI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9hL2E2L0xv/Z29fTklLRS5zdmcv/MTI4MHB4LUxvZ29f/TklLRS5zdmcucG5n"
             alt=""
           />
+          </Link>
         </div>
         <div className="flex-1  text-center">
           <ul className="flex gap-8  justify-center">
@@ -257,29 +260,35 @@ function Navbar() {
             />
           </div>
           <div className="flex gap-4 items-center cursor-pointer  ">
+           <Link to="/Wishlist">
             <img
               className="h-6 w-auto px-2"
               src="https://cdn-icons-png.flaticon.com/128/1077/1077035.png"
               alt="wishlist"
             />
+           </Link>
+            <Link to="/cart">
             <img
               className="h-6 w-auto px-2 cursor-pointer"
               src="https://cdn-icons-png.flaticon.com/128/5337/5337564.png"
-              href="/Cart"
+    
               alt="cart"
             />
+            </Link>
+            
           </div>
         </div>
       </nav>
+      <OfferBar />
 
       <div
   onMouseLeave={() => setActiveMenu(null)}
-  className={`fixed  left-0 top-[72px] w-full bg-white border-t z-10
-  transition-all duration-500 ease-out
+  className={`left-0  w-full bg-white border-t z-10
+  transition-all duration-200 ease-out
   ${
     activeMenu
       ? "opacity-100 translate-y-0 visible"
-      : "opacity-0 -translate-y-4 invisible"
+      : "opacity-0 -translate-y-4 invisible h-0 overflow-hidden"
   }`}
 >
   <div className="max-w-3xl mx-auto px-12 py-12 ">
