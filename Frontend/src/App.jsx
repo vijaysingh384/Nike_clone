@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/register_desktop" element={<Register_Desktop />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/Women_Desktop" element={<Women_Desktop />} />
