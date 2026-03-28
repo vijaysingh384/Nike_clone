@@ -5,7 +5,7 @@ const isloggedin = require('../middleware/isLoggedIn');
 const Productmodel = require('../models/Productmodel');
 router.get("/home" ,function (req , res){
      res.json({
-        error: req.flash("error")
+        error: req.flash({error , loggedin : false})
     });
 });
 

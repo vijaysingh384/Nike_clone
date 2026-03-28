@@ -1,8 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import OfferBar from "./OfferBar";
+import { useAuth } from "../../context/AuthContext";
+
 function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
+  const { isLoggedIn, logout } = useAuth();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    fetch("http://localhost:3000/users/logout", { credentials: "include" });
+    logout();
+    navigate("/login");
+  }
 
   const menuData = {
     NewFeatured: [
@@ -191,10 +201,15 @@ function Navbar() {
 
   return (
     <>
-    <div className="flex w-full top-0 bg-zinc-100 ">
-        <Link to="/Register_Desktop">Register </Link>
-
-        <Link onClick={() => setOpen(true)}> Login</Link>
+    <div className="flex w-full top-0 bg-zinc-100 justify-end px-6 py-1 gap-4 text-sm">
+        {isLoggedIn ? (
+            <button onClick={handleLogout} className="hover:underline">Logout</button>
+        ) : (
+            <>
+                <Link to="/register_desktop" className="hover:underline">Register</Link>
+                <Link to="/login" className="hover:underline">Login</Link>
+            </>
+        )}
     </div>
       <nav className="bg-white items-center justify-between py-4 flex px-10 shadow-md sticky top-0   left-0 right-0 z-80">
         <div>

@@ -1,23 +1,16 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Layout/Navbar";
-import OfferBar from "../components/Layout/OfferBar";
 import Footer from "../components/Layout/Footer";
-import PhoneModal from "../components/UI/PhoneModal";
+import { useAuth } from "../context/AuthContext";
 
 function Register_Desktop() {
-  const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    fullname: "",
-    email: "",
-    password: "",
-  });
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  const [formData, setFormData] = useState({ fullname: "", email: "", password: "" });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -28,11 +21,10 @@ function Register_Desktop() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       const data = await response.json();
-
       if (response.ok) {
-        alert("Registered successfully");
+        login();
+        navigate("/Home");
       } else {
         alert(data.message);
       }
@@ -69,12 +61,14 @@ function Register_Desktop() {
             <p className="mt-2 mb-2 text-white">
               Move, Shop and Celebrate with the best of Nike.
             </p>
-            <button className="bg-white px-4 py-2 rounded-2xl font-semibold" onClick={() => setOpen(true)}>
-              Sign up 
-            </button>
-
-            {open && <PhoneModal close={() => setOpen(false)} />}
-          </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-sm">
+              <input name="fullname" type="text" placeholder="Full Name" value={formData.fullname} onChange={handleChange} className="border p-2 rounded" required />
+              <input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} className="border p-2 rounded" required />
+              <input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange} className="border p-2 rounded" required />
+              <button type="submit" className="bg-white px-4 py-2 rounded-2xl font-semibold">
+                Sign up
+              </button>
+            </form>          </div>
         </div>
         <div className="px-12 py-12">
           <h2 className="text-2xl ">Benefits</h2>
