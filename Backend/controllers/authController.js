@@ -28,14 +28,12 @@ module.exports.registerUser = async (req, res) => {
 
     // Generate token
     const token = generateToken(user);
-    res.cookie("token", token, {
-      httpOnly: true
-    });
 
     // Send response to React
     res.status(201).json({
       success: true,
       message: "User registered successfully",
+      token,
       user: {
         id: user._id,
         fullname: user.fullname,
@@ -67,13 +65,11 @@ module.exports.loginUser = async function (req , res) {
 
     bcrypt.compare(password , user.password , function(err, result){
         if(result){
-           let token =  generateToken(user);
-           res.cookie("token" , token , {
-            httpOnly: true
-           }); 
+           let token = generateToken(user);
            return res.status(200).json({
             success: true,
             message: "login successful",
+            token,
             user: {
               id: user._id,
               fullname: user.fullname,

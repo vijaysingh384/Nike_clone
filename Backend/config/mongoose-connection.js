@@ -5,7 +5,7 @@ const mongoURI = config.get("MONGODB_URI");
 
 console.log("Attempting to connect to MongoDB:", mongoURI);
 
-mongoose.connect(mongoURI)
+mongoose.connect(mongoURI, { maxPoolSize: 10 })
 .then(function(){
     console.log("MongoDB connected successfully");
 }).catch(function(err){

@@ -27,7 +27,7 @@ function Men_Desktop() {
           <h1 className="text-2xl font-semibold w-32">Men</h1>
 
           <ul className="flex-1 flex gap-6 justify-center text-lg">
-            <li className="cursor-pointer hover:underline">Shoes</li>
+            <a href="/products"><li className="cursor-pointer hover:underline">Shoes</li></a>
             <li className="cursor-pointer hover:underline">Clothing</li>
             <li className="cursor-pointer hover:underline">Accessories</li>
             <li className="cursor-pointer hover:underline">Shop All</li>
@@ -39,6 +39,7 @@ function Men_Desktop() {
           <img
             src="https://prod-assets.nike.in/NIKE/nes-nike-reloaded-svc/static/assets/images/Desktop%20MLP%20P1.png"
             alt=""
+            loading="lazy"
           />
         </div>
         <div className=" items-center justify-center text-center ">
@@ -52,14 +53,14 @@ function Men_Desktop() {
         <h1 className="px-5">Shop by Sport</h1>
         <div className="px-5 grid grid-cols-6 grid-rows-5 gap-4 mt-8">
         
-          <div className="col-span-2 row-span-5"><img src="https://images-static.nykaa.com/uploads/443ae215-434f-49a6-b51a-01762a4ea207.png?tr=cm-pad_resize,w-750" alt="" /></div>
-          <div className="col-span-2 row-span-5 col-start-3"><img src="https://images-static.nykaa.com/uploads/9bb64081-7a35-4900-b107-64ca3f2fe2b4.png?tr=cm-pad_resize,w-750" alt="" /></div>
-          <div className="col-span-2 row-span-5 col-start-5"><img src="https://images-static.nykaa.com/uploads/8f9ca06e-355c-4301-8287-7c5d1c0ba02f.png?tr=cm-pad_resize,w-750" alt="" /></div>
+          <div className="col-span-2 row-span-5"><img src="https://images-static.nykaa.com/uploads/443ae215-434f-49a6-b51a-01762a4ea207.png?tr=cm-pad_resize,w-750" alt="" loading="lazy" /></div>
+          <div className="col-span-2 row-span-5 col-start-3"><img src="https://images-static.nykaa.com/uploads/9bb64081-7a35-4900-b107-64ca3f2fe2b4.png?tr=cm-pad_resize,w-750" alt="" loading="lazy" /></div>
+          <div className="col-span-2 row-span-5 col-start-5"><img src="https://images-static.nykaa.com/uploads/8f9ca06e-355c-4301-8287-7c5d1c0ba02f.png?tr=cm-pad_resize,w-750" alt="" loading="lazy" /></div>
         </div>
         <div className="grid grid-cols-4 grid-rows-4 gap-1 mt-40">
         
-        <img className="col-span-2 row-span-4" src="https://images-static.nykaa.com/uploads/104dbcf5-1137-4653-a427-43bfa23b12fb.png?tr=cm-pad_resize,w-900" alt="" />
-        <img className="col-span-2 row-span-4" src="https://images-static.nykaa.com/uploads/b751fd59-1fbc-4ae5-87a7-12332b5a1f7c.png?tr=cm-pad_resize,w-900" alt="" />
+        <img className="col-span-2 row-span-4" src="https://images-static.nykaa.com/uploads/104dbcf5-1137-4653-a427-43bfa23b12fb.png?tr=cm-pad_resize,w-900" alt="" loading="lazy" />
+        <img className="col-span-2 row-span-4" src="https://images-static.nykaa.com/uploads/b751fd59-1fbc-4ae5-87a7-12332b5a1f7c.png?tr=cm-pad_resize,w-900" alt="" loading="lazy" />
      
     </div>
       </div>
@@ -82,9 +83,9 @@ function Men_Desktop() {
         <h1 className="mt-2">More to Explore</h1>
          <div className="px-5 grid grid-cols-6 grid-rows-5 gap-4 mt-2">
         
-          <div className="col-span-2 row-span-5"><img src="https://images-static.nykaa.com/uploads/b34e3d48-a178-4ee9-9ece-18b7eb17dea3.png?tr=cm-pad_resize,w-750" alt="" /></div>
-          <div className="col-span-2 row-span-5 col-start-3"><img src="https://images-static.nykaa.com/uploads/d18dfb96-651f-49a4-92ee-9926f7c218c8.png?tr=cm-pad_resize,w-750" alt="" /></div>
-          <div className="col-span-2 row-span-5 col-start-5"><img src="https://images-static.nykaa.com/uploads/9e99d8e4-de39-4fed-97e1-f45f3dab4513.png?tr=cm-pad_resize,w-750" alt="" /></div>
+          <div className="col-span-2 row-span-5"><img src="https://images-static.nykaa.com/uploads/b34e3d48-a178-4ee9-9ece-18b7eb17dea3.png?tr=cm-pad_resize,w-750" alt="" loading="lazy" /></div>
+          <div className="col-span-2 row-span-5 col-start-3"><img src="https://images-static.nykaa.com/uploads/d18dfb96-651f-49a4-92ee-9926f7c218c8.png?tr=cm-pad_resize,w-750" alt=""  loading="lazy"/></div>
+          <div className="col-span-2 row-span-5 col-start-5"><img src="https://images-static.nykaa.com/uploads/9e99d8e4-de39-4fed-97e1-f45f3dab4513.png?tr=cm-pad_resize,w-750" alt=""  loading="lazy"/></div>
         </div>
 
       </div>

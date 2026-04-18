@@ -36,6 +36,7 @@ function Kids_Desktop() {
           <img
             src="https://prod-assets.nike.in/NIKE/nes-nike-reloaded-svc/static/assets/images/P1_DT_Classics_for_Kids.png"
             alt=""
+            loading="lazy"
           />
         </div>
         <div className=" items-center justify-center text-center ">
@@ -49,9 +50,9 @@ function Kids_Desktop() {
         <h1 className="px-5">More to Explore</h1>
         <div className="px-5 grid grid-cols-6 grid-rows-5 gap-4 mt-8">
         
-          <div className="col-span-2 row-span-5"><img src="https://images-static.nykaa.com/uploads/98e966c5-d1ce-4c7d-bff0-1b57c86a79c8.png?tr=cm-pad_resize,w-750" alt="" /></div>
-          <div className="col-span-2 row-span-5 col-start-3"><img src="https://images-static.nykaa.com/uploads/43b73f7f-0359-4e66-a1a7-eccbc45401d2.png?tr=cm-pad_resize,w-750" alt="" /></div>
-          <div className="col-span-2 row-span-5 col-start-5"><img src="https://images-static.nykaa.com/uploads/6743bfcb-ed29-4023-bb96-c61f28981fa0.png?tr=cm-pad_resize,w-750" alt="" /></div>
+          <div className="col-span-2 row-span-5"><img src="https://images-static.nykaa.com/uploads/98e966c5-d1ce-4c7d-bff0-1b57c86a79c8.png?tr=cm-pad_resize,w-750" alt="" loading="lazy" /></div>
+          <div className="col-span-2 row-span-5 col-start-3"><img src="https://images-static.nykaa.com/uploads/43b73f7f-0359-4e66-a1a7-eccbc45401d2.png?tr=cm-pad_resize,w-750" alt="" loading="lazy" /></div>
+          <div className="col-span-2 row-span-5 col-start-5"><img src="https://images-static.nykaa.com/uploads/6743bfcb-ed29-4023-bb96-c61f28981fa0.png?tr=cm-pad_resize,w-750" alt="" loading="lazy" /></div>
         </div>
 
         <Product_section

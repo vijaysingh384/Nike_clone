@@ -5,7 +5,7 @@ function AdminPage(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:3000/owner/admin")
+        fetch("http://localhost:3001/owner/admin")
         .then(res => res.text())
         .then(data => console.log(data));
     }, []);
@@ -13,14 +13,23 @@ function AdminPage(){
     function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
-        fetch("http://localhost:3000/products/create", {
+        fetch("http://localhost:3001/products/create", {
             method: "POST",
             body: formData,
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            navigate("/products");
+        .then(async res => {
+            const text = await res.text();
+            try {
+                const data = JSON.parse(text);
+                if (data.error) {
+                    alert("Error: " + data.error);
+                } else {
+                    navigate("/products");
+                }
+            } catch {
+                console.error("Server returned non-JSON:", text);
+                alert("Server error. Check console for details.");
+            }
         })
         .catch(err => console.error(err));
     }
@@ -49,7 +58,7 @@ function AdminPage(){
 
                         <div className="grid grid-cols-2 gap-4">
                             <input name="name" type="text" placeholder="Product Name" className="border p-2 rounded w-full" />
-                            <input name="description" type="text" placeholder="Product description" className="border p-2 rounded w-full" />
+                            <input name="description" type="text" placeholder="Product Description" className="border p-2 rounded w-full" />
                             <input name="price" type="number" placeholder="Product Price" className="border p-2 rounded w-full" />
                         </div>
 

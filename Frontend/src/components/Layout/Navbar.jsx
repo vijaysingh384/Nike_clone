@@ -9,7 +9,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   function handleLogout() {
-    fetch("http://localhost:3000/users/logout", { credentials: "include" });
+    fetch("http://localhost:3001/users/logout", { credentials: "include" });
     logout();
     navigate("/login");
   }

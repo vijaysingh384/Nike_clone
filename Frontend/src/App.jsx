@@ -1,19 +1,20 @@
-import React from "react";
+import React, { Suspense , lazy  } from "react";
 import { Route, Routes } from "react-router-dom";
-import Register_Desktop from "./pages/Register_Desktop";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Women_Desktop from "./pages/Women_Desktop";
-import Men_Desktop from "./pages/Men_Desktop";
-import Kids_Desktop from "./pages/Kids_Desktop";
-import Jordan_Desktop from "./pages/Jordan_Desktop";
-import Wishlist from "./pages/Wishlist";
-import AdminPage from "./pages/AdminPage";
-import ProductsPage from "./pages/ProductsPage";
+const Register_Desktop = lazy (() => import ("./pages/Register_Desktop"));
+const Login = lazy(() => import("./pages/Login"));
+const Home = lazy(() => import("./pages/Home"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Women_Desktop = lazy(() => import("./pages/Women_Desktop"));
+const Men_Desktop = lazy(() => import("./pages/Men_Desktop"));
+const Kids_Desktop = lazy(() => import("./pages/Kids_Desktop"));
+const Jordan_Desktop = lazy(() => import("./pages/Jordan_Desktop"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
+const AdminPage = lazy(() => import("./pages/AdminPage"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
 function App() {
   return (
     <>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/register_desktop" element={<Register_Desktop />} />
         <Route path="/login" element={<Login />} />
@@ -29,6 +30,7 @@ function App() {
  
   
       </Routes>
+      </Suspense>
     </>
   );
 }

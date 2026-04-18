@@ -4,15 +4,21 @@ const upload = require("../config/multer-config");
 const Product = require("../models/Productmodel");
 
 // Create product
-router.post('/create', upload.single("image"), async function(req, res){
+router.post('/create', function(req, res, next) {
+    upload.single("image")(req, res, function(err) {
+        if (err) {
+            return res.status(500).json({ error: "Image upload failed: " + err.message });
+        }
+        next();
+    });
+}, async function(req, res){
     try {
-        let { name, description , price  } = req.body;
+        let { name, description, price } = req.body;
         let product = await Product.create({
-            image: req.file ? req.file.buffer : null,
+            image: req.file ? req.file.path : null,
             name,
             description,
             price,
-            
         });
         res.status(201).json({ message: "Product created successfully", product });
     } catch(err) {
@@ -20,19 +26,23 @@ router.post('/create', upload.single("image"), async function(req, res){
     }
 });
 
-// Get all products
+// Get all products with pagination
 router.get('/all', async function(req, res){
     try {
-        let products = await Product.find();
-        let formatted = products.map(p => ({
-            _id: p._id,
-            name: p.name,
-            description: p.description,
-            price: p.price,
-            
-            image: p.image ? `data:image/jpeg;base64,${p.image.toString('base64')}` : null,
-        }));
-        res.json(formatted);
+        const page = parseInt(req.query.page) || 1;
+        const limit = 8;
+        const skip = (page - 1) * limit;
+
+        const total = await Product.countDocuments();
+        const products = await Product.find().skip(skip).limit(limit);
+
+        res.set('Cache-Control', 'no-store');
+        res.json({
+            products,
+            currentPage: page,
+            totalPages: Math.ceil(total / limit),
+            hasMore: page * limit < total,
+        });
     } catch(err) {
         res.status(500).json({ error: err.message });
     }

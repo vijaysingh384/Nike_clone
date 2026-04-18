@@ -1,20 +1,19 @@
- const jwt = require('jsonwebtoken');
- const usermodel = require('../models/usermodel');
+const jwt = require('jsonwebtoken');
+const usermodel = require('../models/usermodel');
 
- module.exports = async function (req , res , next){
-    if(!req.cookies.token){
-        req.flash('error' , "you need to login firrst");
-        return res.redirct("/home");
+module.exports = async function (req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+
+    if (!token) {
+        return res.status(401).json({ success: false, message: "You need to login first" });
     }
-    try{
-        let decoded = jwt.verify(req.cookies.token , process.env.JWT_KEY);
-        let user = await usermodel.findOne({email: decoded.email}).select("-password");
-        
+    try {
+        let decoded = jwt.verify(token, process.env.JWT_KEY);
+        let user = await usermodel.findOne({ email: decoded.email }).select("-password");
         req.user = user;
         next();
-
     } catch (error) {
-        req.flash('error', "something went wrong");
-        res.redirect("/home");
+        return res.status(401).json({ success: false, message: "Invalid or expired token" });
     }
- };
+};
